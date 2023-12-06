@@ -30,10 +30,6 @@ public class CarnivorScript : AnimalMasterScript
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //if (Hunger < MaxFood / 10)
-        //{
-        //    print("flee");
-        //}
 
         if (collision.gameObject.GetComponent<AnimalMasterScript>() != null && collision.gameObject.GetComponent<AnimalMasterScript>().species != species)
         {

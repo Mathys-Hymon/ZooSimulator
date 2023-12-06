@@ -106,7 +106,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -4839,7 +4839,7 @@ GameObject:
   - component: {fileID: 3380682683417503091}
   - component: {fileID: 3795733018383673837}
   - component: {fileID: 844410974164044404}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: DetectionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

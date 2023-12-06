@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2043738467966957419}
   - component: {fileID: 9184717060372802693}
   - component: {fileID: 39612321971222060}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fruit
   m_TagString: Grass
   m_Icon: {fileID: 0}
@@ -145,6 +145,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.12}
+  m_Offset: {x: -0.009082317, y: -0.09638357}
   serializedVersion: 2
-  m_Radius: 0.29
+  m_Radius: 0.2863679

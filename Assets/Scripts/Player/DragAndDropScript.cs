@@ -17,7 +17,7 @@ public class DragAndDropScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Vector2.zero, ~LayerZone);
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Vector2.zero);
 
                 if (hit.collider != null && hit.collider.gameObject.layer == 3)
                 {
@@ -31,13 +31,16 @@ public class DragAndDropScript : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(0)) 
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Vector2.zero, Mathf.Infinity, LayerZone);
 
-            if(hit.collider.gameObject.layer == 7)
+            if (hit)
             {
-                CanDrop = true;
-                GrabCollider.enabled = true;
-                GrabRef = null;
+                if (hit.collider.gameObject.layer == 7)
+                {
+                    CanDrop = true;
+                    GrabCollider.enabled = true;
+                    GrabRef = null;
+                }
             }
             MouseButtonDown = false;
         }
@@ -46,18 +49,18 @@ public class DragAndDropScript : MonoBehaviour
         {
             if(!MouseButtonDown)
             {
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Vector2.zero);
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Vector2.zero, Mathf.Infinity, LayerZone);
 
-                if (hit.collider.gameObject != null)
+                if (hit)
                 {
-                    if(hit.collider.gameObject.layer == LayerZone)
+                    if(hit.collider.gameObject.layer == 7)
                     {
                     CanDrop = true;
                     GrabCollider.enabled = true;
                     GrabRef = null;
                     }
                 }
-                print(hit.collider.gameObject.layer);
+                
             }
             if(GrabRef != null)
             {
