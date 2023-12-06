@@ -4,12 +4,15 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
     private int Minutes;
     private int Hours = 7;
-    private int Days = 1;
+    [SerializeField] private int Days = 1;
+    [SerializeField] private int Month = 1;
+    [SerializeField] private int Year = 1;
     private bool Drawer1;
     private bool Drawer2;
     private bool Drawer3;
@@ -21,6 +24,9 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject FoodDrawer;
     [SerializeField] private GameObject HerbivorDrawer;
     [SerializeField] private DeliveryScript DeliveryZone;
+    [SerializeField] private TMP_Text DateText;
+    [SerializeField] private Gradient SunColor;
+    [SerializeField] private Image SkyImage;
     void Start()
     {
         Clock();
@@ -127,8 +133,9 @@ public class UIScript : MonoBehaviour
     private void Clock()
     {
         Minutes += 1;
+        SkyImage.color = SunColor.Evaluate((((float)Hours * -15f) + ((float)Minutes * 2.5f) / -10) / -360);
 
-        if(Minutes >= 60)
+        if (Minutes >= 60)
         {
             Minutes = 0;
             Hours += 1;
@@ -160,6 +167,18 @@ public class UIScript : MonoBehaviour
         {
             Hours = 0;
             Days += 1;
+            DateText.text = string.Format("{0:00}",Days) + "/" + string.Format("{0:00}", Month) + "/" + Year;
+            if(Days >= 30)
+            {
+                Days = 0;
+                Month += 1;
+
+                if(Month >= 12)
+                {
+                    Month = 0;
+                    Year += 1;
+                }
+            }
 
             GameObject[] AnimalsRef = GameObject.FindGameObjectsWithTag("Animal");
 

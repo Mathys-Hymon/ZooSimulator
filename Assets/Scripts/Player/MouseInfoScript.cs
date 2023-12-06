@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MouseInfoScript : MonoBehaviour
@@ -32,7 +31,7 @@ public class MouseInfoScript : MonoBehaviour
     }
     private void Update()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 300f, ~ZoneMask);
         if (hit.collider != null && hit.collider.gameObject.GetComponent<AnimalMasterScript>() != null)
         {
