@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3766304652123575230}
   - component: {fileID: 1073278384508057636}
   - component: {fileID: 7864768578232775880}
-  - component: {fileID: 3526263051852579900}
   m_Layer: 0
   m_Name: Meat
   m_TagString: Meat
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1134607587037719140}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.14, y: 2.17, z: 0}
+  m_LocalPosition: {x: -19.06, y: -14.65, z: 0.6140628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,16 +148,3 @@ CircleCollider2D:
   m_Offset: {x: 0.039527416, y: 0}
   serializedVersion: 2
   m_Radius: 0.24589682
---- !u!114 &3526263051852579900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134607587037719140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1278b2b18b6814342b6d0b79411c8957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinationTag: Zone

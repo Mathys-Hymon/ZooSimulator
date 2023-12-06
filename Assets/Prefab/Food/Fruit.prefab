@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2043738467966957419}
   - component: {fileID: 9184717060372802693}
   - component: {fileID: 39612321971222060}
-  - component: {fileID: -5630288868542096242}
   m_Layer: 0
   m_Name: Fruit
   m_TagString: Grass
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4177421218795690999}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.688, y: 1.203, z: 0}
+  m_LocalPosition: {x: -19.06, y: -14.65, z: 0.6140628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,16 +148,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.12}
   serializedVersion: 2
   m_Radius: 0.29
---- !u!114 &-5630288868542096242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4177421218795690999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1278b2b18b6814342b6d0b79411c8957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinationTag: Zone

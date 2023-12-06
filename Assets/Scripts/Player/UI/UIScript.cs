@@ -20,7 +20,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject CarnivorDrawer;
     [SerializeField] private GameObject FoodDrawer;
     [SerializeField] private GameObject HerbivorDrawer;
-    [SerializeField] private GameObject DeliveryZone;
+    [SerializeField] private DeliveryScript DeliveryZone;
     void Start()
     {
         Clock();
@@ -74,8 +74,8 @@ public class UIScript : MonoBehaviour
 
     public void SpawnItem(GameObject Item)
     {
-        
-        Instantiate(Item, transform);
+
+        DeliveryZone.SpawnAnimal(Item);
     }
 
 
