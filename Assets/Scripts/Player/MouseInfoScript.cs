@@ -41,9 +41,9 @@ public class MouseInfoScript : MonoBehaviour
                 ShowWindow();
             }
             transform.position = hit.transform.position;
-            HungerSlider.value = AnimalInfos.GetHunger();
-            ThirstSlider.value = AnimalInfos.GetThirst();
-            TirednessSlider.value = AnimalInfos.GetTiredness();
+            HungerSlider.value = AnimalInfos.GetHunger() / AnimalInfos.GetMaxHunger();
+            ThirstSlider.value = AnimalInfos.GetThirst() / 100;
+            TirednessSlider.value = AnimalInfos.GetTiredness() / 50;
             Age.SetText(AnimalInfos.GetAge() + " ans");
         }
 

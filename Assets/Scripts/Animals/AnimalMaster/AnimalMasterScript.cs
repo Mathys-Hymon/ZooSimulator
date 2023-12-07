@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class AnimalMasterScript : MonoBehaviour
 {
@@ -18,9 +17,10 @@ public class AnimalMasterScript : MonoBehaviour
     [SerializeField] private GameObject HitActor;
     [SerializeField] private GameObject deadBodyRef;
     [SerializeField] private ParticleSystem ParticleSystem;
+    [SerializeField] private GameObject PrefabRef;
     public speciesList species;
 
-    private string[] nameList = new string[] { "Rigolo", "Chantilly", "Zouzou", "Pompon", "Choco", "Biscotte", "Zébulon", "Frimousse", "Muffin", "Sardine", "Tournesol", "Guimauve", "Caramel", "Zigzag", "Plume", "Banjo", "Roudoudou", "Macaron", "Chaussette", "Pistache", "Sushi", "Quenotte", "Bidule", "Zibeline", "Truffe", "Champignon", "Paillette", "Tornade", "Canaille", "Nougat", "Citronnelle", "Ketchup", "Poisson-chat", "Frisouille", "Brioche", "Ciboulette", "Marmelade", "Cactus", "Boulette", "Sauterelle", "Froufrou", "Doudou", "Caprice", "Popcorn", "Chausson", "Zinzin", "Pétale", "Quinoa", "Macadam", "Bidon", "Mirabelle", "Éclair", "Frisson", "Spaghetti", "Citron", "Coton", "Calinou", "Grignote", "Cassis", "Zouzou", "Tagada", "Meringue", "Poêlée", "Grisou", "Sirocco", "Biscuit", "Sésame", "Chiffon", "Barbouille", "Pamplelune", "Kawaï", "Potiron", "Vanille", "Clémentine", "Papillon", "Rigolo", "Chantilly", "Zouzou", "Roudoudou", "Gribouille", "Chipie", "Paillasson", "Bouboule", "Vinaigrette", "Canapé", "Zeste", "Touffu", "Bambino", "Gadget", "Barbapapa", "Gribouillis", "Trompette", "Sirocco", "Quiche", "Cassoulet", "Pamplemousse", "Frisquette", "Trottinette", "Radis", "Nuage", "Zorro", "Toupie", "Fringale", "Frisotté", "Chicorée", "Flibustier", "Turbulence", "Ziboulette", "Marmouset", "Chalumeau", "Gribouillis", "Tourniquet", "Papouille", "Flonflon", "Chamallow", "Froufrou", "Capriccio", "Zinzolin", "Chicorée", "Flibustier", "Praline", "Zigzag", "Froufrou", "Brioche", "Ricochet", "Fugace", "Papillon", "Froufrou", "Faribole", "Mouffette", "Quenotte", "Bouillotte", "Cacahuète", "Zeste", "Zigzag", "Galipette", "Pamplemousse", "Sauté", "Rigolo", "Grignote", "Chahut", "Mirliton", "Papouille", "Gadget", "Chaloupe", "Fugue", "Zébulon", "Savonnette", "Nougat", "Pistache", "Frisson", "Ratiboisé", "Ziboulette", "Gadget", "Flibustier", "Chantilly", "Froufrou", "Bouclette", "Flonflon", "Chicorée", "Gribouillis" };
+    private string[] nameList = new string[] { "Rigolo", "Chantilly", "Zouzou","Zizou","Macron", "Pompon", "Choco", "Biscotte", "Zébulon", "Frimousse", "Muffin", "Sardine", "Tournesol", "Guimauve", "Caramel", "Zigzag", "Plume", "Banjo", "Roudoudou", "Macaron", "Chaussette", "Pistache", "Sushi", "Quenotte", "Bidule", "Zibeline", "Truffe", "Champignon", "Paillette", "Tornade", "Canaille", "Nougat", "Citronnelle", "Ketchup", "Poisson-chat", "Frisouille", "Brioche", "Ciboulette", "Marmelade", "Cactus", "Boulette", "Sauterelle", "Froufrou", "Doudou", "Caprice", "Popcorn", "Chausson", "Zinzin", "Pétale", "Quinoa", "Macadam", "Bidon", "Mirabelle", "Éclair", "Frisson", "Spaghetti", "Citron", "Coton", "Calinou", "Grignote", "Cassis", "Zouzou", "Tagada", "Meringue", "Poêlée", "Grisou", "Sirocco", "Biscuit", "Sésame", "Chiffon", "Barbouille", "Pamplelune", "Kawaï", "Potiron", "Vanille", "Clémentine", "Papillon", "Rigolo", "Chantilly", "Zouzou", "Roudoudou", "Gribouille", "Chipie", "Paillasson", "Bouboule", "Vinaigrette", "Canapé", "Zeste", "Touffu", "Bambino", "Gadget", "Barbapapa", "Gribouillis", "Trompette", "Sirocco", "Quiche", "Cassoulet", "Pamplemousse", "Frisquette", "Trottinette", "Radis", "Nuage", "Zorro", "Toupie", "Fringale", "Frisotté", "Chicorée", "Flibustier", "Turbulence", "Ziboulette", "Marmouset", "Chalumeau", "Gribouillis", "Tourniquet", "Papouille", "Flonflon", "Chamallow", "Froufrou", "Capriccio", "Zinzolin", "Chicorée", "Flibustier", "Praline", "Zigzag", "Froufrou", "Brioche", "Ricochet", "Fugace", "Papillon", "Froufrou", "Faribole", "Mouffette", "Quenotte", "Bouillotte", "Cacahuète", "Zeste", "Zigzag", "Galipette", "Pamplemousse", "Sauté", "Rigolo", "Grignote", "Chahut", "Mirliton", "Papouille", "Gadget", "Chaloupe", "Fugue", "Zébulon", "Savonnette", "Nougat", "Pistache", "Frisson", "Ratiboisé", "Ziboulette", "Gadget", "Flibustier", "Chantilly", "Froufrou", "Bouclette", "Flonflon", "Chicorée", "Gribouillis", "Pamplemousse", "Chocolatine", "Paillette", "Tournesol", "Biscotte", "Chamallow", "Pépito", "Mandoline", "Saucisson", "Cupcake", "Fluffy", "Girafelette", "Bananarama", "Toblerone", "Coccinelle", "Spatule", "Pamplemousseline", "Macaroni", "Pistache", "Papillon", "Frisbee", "Chaussette", "Bulldozer", "Chantilly", "Kangourou", "Cactus", "Dragibus", "Marshmallow", "Cornichon", "Cannelle", "Froufrou", "Hibiscus", "Orangina", "Nougat", "Quinoa", "Salamandre", "Zébulon", "Perlimpinpin", "Zibeline", "Pétunia", "Clémentine", "Hamburger", "Flibustier", "Crumpet", "Camembert", "Limonade", "Brindille", "Brouhaha", "Calebasse", "Mimosa", "Chambray", "Gazouillis", "Girouette", "Capucine", "Tambourin", "Kiwifruit", "Guimauve", "Flibustier", "Réglisse", "Écureuil", "Lutin", "Cacahuète", "Bamboula", "Nougatine", "Foufoune", "Pingouin", "Poisson", "Canard", "Biscuit", "Funky", "Tortue", "Zigzag", "Pivoine", "Marmelade", "Bouillotte", "Fandango", "Tartine", "Serpentin", "Banjo", "Rigolo", "Bisou", "Sushi", "Funky", "Rhubarbe", "Violette", "Pamplemousse", "Caramel", "Jambon", "Fiesta", "Moufette", "Serpent", "Brioche", "Coquillette", "Fraise", "Galette", "Poisson", "Kaleidoscope", "Abricot", "Cabriole", "Béton", "Bambou", "Tambourine", "Champignon", "Caméléon", "Hippopotame", "Éléphant", "Sardine", "Toupie", "Éclair", "Biquette", "Licornette", "Parapluie", "Cerise", "Saucisse", "Macaroon", "Zèbre", "Colibri", "Tambourine", "Pistache", "Hérisson", "Lune", "Tigrou", "Quiche", "Chenille", "Lampion", "Kangourou", "Funky", "Moutarde", "Fraise", "Kangourou", "Pomme", "Caribou", "Croissant", "Muffin", "Abracadabra", "Capitaine", "Amande", "Grenouille", "Pingouin", "Mélodie", "Lutin", "Étoile", "Hippopotame", "Bolide", "Tornade", "Grenade", "Lavande", "Bougie", "Crêpe", "Chausson", "Quokka", "Babouin", "Sourire", "Nougatine", "Cacahuète", "Croissant", "Funky", "Kangourou", "Chouquette", "Pétale", "Pamplemousse", "Serpent", "Brioche", "Moufette", "Galette", "Pistache", "Sushi", "Fraise", "Bambou", "Funky", "Pamplemousse", "Chocolatine", "Paillette", "Tournesol", "Biscotte", "Chamallow", "Pépito", "Mandoline", "Saucisson", "Cupcake", "Fluffy", "Girafelette", "Bananarama", "Toblerone", "Coccinelle", "Spatule", "Pamplemousseline", "Macaroni", "Pistache", "Papillon", "Frisbee", "Chaussette", "Bulldozer", "Chantilly", "Kangourou", "Cactus", "Dragibus", "Marshmallow", "Cornichon", "Cannelle", "Froufrou", "Hibiscus", "Orangina", "Nougat", "Quinoa", "Salamandre", "Zébulon", "Perlimpinpin", "Zibeline", "Pétunia", "Clémentine", "Hamburger", "Flibustier", "Crumpet", "Camembert", "Limonade", "Brindille", "Brouhaha", "Calebasse", "Mimosa", "Chambray", "Gazouillis", "Girouette", "Capucine", "Tambourin", "Kiwifruit", "Guimauve", "Flibustier", "Réglisse", "Écureuil", "Lutin", "Cacahuète", "Bamboula", "Nougatine", "Foufoune", "Pingouin", "Poisson", "Canard", "Biscuit", "Funky", "Tortue", "Zigzag", "Pivoine", "Marmelade", "Bouillotte", "Fandango", "Tartine", "Serpentin", "Banjo", "Rigolo", "Bisou", "Sushi", "Funky", "Rhubarbe", "Violette", "Pamplemousse", "Caramel", "Jambon", "Fiesta", "Moufette", "Serpent", "Brioche", "Coquillette", "Fraise", "Galette", "Poisson", "Kaleidoscope", "Abricot", "Cabriole", "Béton", "Bambou", "Tambourine", "Champignon", "Caméléon", "Hippopotame", "Éléphant", "Sardine", "Toupie", "Éclair", "Biquette", "Licornette", "Parapluie", "Cerise", "Saucisse", "Macaroon", "Zèbre", "Colibri", "Tambourine", "Pistache", "Hérisson", "Lune", "Tigrou", "Quiche", "Chenille", "Lampion", "Kangourou", "Funky", "Moutarde", "Fraise", "Kangourou", "Pomme", "Caribou", "Croissant", "Muffin", "Abracadabra", "Capitaine", "Amande", "Grenouille", "Pingouin", "Mélodie", "Lutin", "Étoile", "Hippopotame", "Bolide", "Tornade", "Grenade", "Lavande", "Bougie", "Crêpe", "Chausson", "Quokka", "Babouin", "Sourire", "Nougatine", "Cacahuète", "Croissant", "Funky", "Kangourou", "Chouquette", "Pétale" };
     private bool InvincibilityFrame;
     private int DeathAge;
     public enum speciesList
@@ -45,42 +45,106 @@ public class AnimalMasterScript : MonoBehaviour
     private bool CanMove = true;
     private bool ISChilling = false;
     private bool ChillMidTime = false;
-    private bool fuckable;
+    private bool CanBreed;
     private bool touchBorder;
     private bool sleep;
     private bool tired;
 
+    public void SetCanBreed(bool newBreed)
+    {
+        CanBreed = newBreed;
+    }
+    public bool GetCanBreed()
+    {
+        return CanBreed;
+    }
 
+    public int GetDeathAge()
+    {
+        return DeathAge;
+    }
+    public string GetGameobject()
+    {
+        return PrefabRef.name;
+    }
+
+    public float GetPositionX()
+    {
+        return gameObject.transform.position.x;
+    }
+    public float GetPositionY()
+    {
+        return gameObject.transform.position.y;
+    }
+    public float GetPositionZ()
+    {
+        return gameObject.transform.position.z;
+    }
+    public void SetName(string newName)
+    {
+        name = newName;
+    }
     public int GetAge()
     {
         return Age;
     }
 
+    public void SetAge(int newage)
+    {
+        Age = newage;
+    }
+
     public float GetHunger()
     {
-        return Hunger / MaxFood;
+        return Hunger;
     }
+
+    public void SetHunger(float newhunger)
+    {
+        Hunger = newhunger;
+    }
+
+    public float GetMaxHunger()
+    {
+        return MaxFood;
+    }
+
+    public void SetDeathAge(float newage) { }
+
 
     public float GetTiredness()
     {
-        return Tiredness / 50;
+        return Tiredness;
+    }
+
+    public void SetTiredness(float newtiredness)
+    {
+        Tiredness = newtiredness;
     }
 
     public float GetThirst()
     {
-        return Thirst / 100;
+        return Thirst;
+    }
+
+    public void SetThirst(float newthirst)
+    {
+        Thirst = newthirst;
     }
     public string GetName()
     {
         return Name;
     }
+    
+
 
     private void Start()
     {
-        DeathAge = Random.Range(OlderAge - 5, OlderAge);
-        fuckable = false;
+        if(DeathAge == 0)
+        {
+            DeathAge = Random.Range(OlderAge - 5, OlderAge);
+        }
         moveTo = false;
-        Age = 1;
         Name = nameList[Random.Range(0, nameList.Length)];
         WalkTime = Random.Range(3f, 5f);
         MovingDistance = new Vector2(-1.5f,1.5f);
@@ -95,13 +159,9 @@ public class AnimalMasterScript : MonoBehaviour
     {
         if (!dead)
         {
-            
             gameObject.transform.localScale = new Vector3(0.5f + (float)Age / 50, 0.5f + (float)Age / 50,1);
-
             if (CanMove && !sleep) { Move(MVDistanceSave); }
-
             if (!ISChilling && !sleep) { ISChilling = true; Invoke("Chill", WalkTime); Invoke("MidChill", WalkTime / 3); }
-
             if(sleep)
             {
                 Sleep();
@@ -120,7 +180,7 @@ public class AnimalMasterScript : MonoBehaviour
         {
             Thirst--;
             Hunger--;
-            Invoke("Starving", 1f);
+            Invoke("Starving", 2f);
         }
     }
 
@@ -144,7 +204,7 @@ public class AnimalMasterScript : MonoBehaviour
 
             if(Age > OlderAge/10 )
             {
-              fuckable = true;
+                CanBreed = true;
             }
         }
         else if (Food.tag == "Water")
@@ -224,9 +284,9 @@ public class AnimalMasterScript : MonoBehaviour
             moveTo = true;
             MVDistanceSave = new Vector2(collision.transform.position.x, collision.transform.position.y) - new Vector2(transform.position.x, transform.position.y);
         }
-        else if(collision.GetComponent<AnimalMasterScript>() != null && collision.GetComponent<AnimalMasterScript>().species == species && collision.GetComponent<AnimalMasterScript>().fuckable)
+        else if(collision.GetComponent<AnimalMasterScript>() != null && collision.GetComponent<AnimalMasterScript>().species == species && collision.GetComponent<AnimalMasterScript>().CanBreed)
         {
-            if(fuckable)
+            if(CanBreed)
             {
                 CollisionRef = collision;
                 moveTo = true;
@@ -324,7 +384,7 @@ public class AnimalMasterScript : MonoBehaviour
             Feed(collision.gameObject);
         }
 
-        else if (collision.gameObject == CollisionRef && collision.gameObject.GetComponent<AnimalMasterScript>() != null && collision.gameObject.GetComponent<AnimalMasterScript>().species == species && collision.gameObject.GetComponent<AnimalMasterScript>().fuckable)
+        else if (collision.gameObject == CollisionRef && collision.gameObject.GetComponent<AnimalMasterScript>() != null && collision.gameObject.GetComponent<AnimalMasterScript>().species == species && collision.gameObject.GetComponent<AnimalMasterScript>().CanBreed)
         {
             MakeKids(collision.gameObject);
         }
@@ -332,14 +392,16 @@ public class AnimalMasterScript : MonoBehaviour
 
     private void MakeKids(GameObject collisionObject)
     {
-        fuckable = false;
-        if(collisionObject.GetComponent<AnimalMasterScript>().fuckable) 
+        CanBreed = false;
+        if(collisionObject.GetComponent<AnimalMasterScript>().CanBreed) 
         {
-            fuckable = false;
-            Instantiate(gameObject, transform.position, Quaternion.identity);
+            CanBreed = false;
+            var child = Instantiate(PrefabRef, transform.position, Quaternion.identity);
+            child.GetComponent<AnimalMasterScript>().SetAge(1);
+
 
         }
-        fuckable = false;
+        CanBreed = false;
 
     }
 

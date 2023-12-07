@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
+    public static UIScript instance;
     private int Minutes;
     private int Hours = 7;
     [SerializeField] private int Days = 1;
@@ -16,7 +13,6 @@ public class UIScript : MonoBehaviour
     private bool Drawer1;
     private bool Drawer2;
     private bool Drawer3;
-    private Camera mainCamera;
 
     [SerializeField] private GameObject TimeWheel;
     [SerializeField] private TMP_Text TimeText;
@@ -27,10 +23,56 @@ public class UIScript : MonoBehaviour
     [SerializeField] private TMP_Text DateText;
     [SerializeField] private Gradient SunColor;
     [SerializeField] private Image SkyImage;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         Clock();
-        mainCamera = Camera.main;
+    }
+
+    public void SetMin(int NewMin)
+    {
+        Minutes = NewMin;
+    }
+    public void SetHour(int NewHour)
+    {
+        Hours = NewHour;
+    }
+    public void SetDay(int NewDay)
+    {
+        Days = NewDay;
+    }
+    public void SetMonth(int NewMonth)
+    {
+        Month = NewMonth;
+    }
+    public void SetYear(int NewYear)
+    {
+        Year = NewYear;
+    }
+
+    public int GetMin()
+    {
+        return Minutes;
+    }
+    public int GetHours()
+    {
+        return Hours;
+    }
+    public int GetDays()
+    {
+        return Days;
+    }
+    public int GetMonth()
+    {
+        return Month;
+    }
+    public int GetYear()
+    {
+        return Year;
     }
 
     public void OpenDrawer(int Drawer)
