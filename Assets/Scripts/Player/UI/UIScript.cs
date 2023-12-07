@@ -44,14 +44,17 @@ public class UIScript : MonoBehaviour
     public void SetDay(int NewDay)
     {
         Days = NewDay;
+        DateText.text = string.Format("{0:00}", Days) + "/" + string.Format("{0:00}", Month) + "/" + Year;
     }
     public void SetMonth(int NewMonth)
     {
         Month = NewMonth;
+        DateText.text = string.Format("{0:00}", Days) + "/" + string.Format("{0:00}", Month) + "/" + Year;
     }
     public void SetYear(int NewYear)
     {
         Year = NewYear;
+        DateText.text = string.Format("{0:00}", Days) + "/" + string.Format("{0:00}", Month) + "/" + Year;
     }
 
     public int GetMin()
@@ -65,6 +68,7 @@ public class UIScript : MonoBehaviour
     public int GetDays()
     {
         return Days;
+
     }
     public int GetMonth()
     {
