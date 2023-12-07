@@ -82,7 +82,7 @@ public class AnimalMasterScript : MonoBehaviour
     }
     public void SetName(string newName)
     {
-        name = newName;
+        Name = newName;
     }
     public int GetAge()
     {

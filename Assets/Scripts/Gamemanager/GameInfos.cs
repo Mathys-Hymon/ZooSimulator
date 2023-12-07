@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameInfos
 {
     public List<AnimalInfos> AnimalInfos = new List<AnimalInfos>();
+    public List<ObjectInfos> ObjectInfos = new List<ObjectInfos>();
     public int minutes;
     public int hours;
     public int days;
@@ -25,5 +26,12 @@ public class AnimalInfos
     public float thirst;
     public float tiredness;
     public bool canBreed;
+}
+
+[Serializable]
+public class ObjectInfos
+{
+    public string FoodRef;
+    public float foodPosX, foodPosY, foodPosZ;
 }
 
