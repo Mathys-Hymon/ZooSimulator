@@ -1,15 +1,29 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem instance;
     public GameInfos Infos;
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private AudioSource MusicSource;
+
+    private float volume = 0.5f;
 
     void Start()
     {
         instance = this;
         Load();
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            volume = PlayerPrefs.GetFloat("Volume");
+        }
+        volumeSlider.value = volume;
+        MusicSource.volume = volume;
+
+
     }
 
 
@@ -83,5 +97,14 @@ public class SaveSystem : MonoBehaviour
             File.Create(Application.persistentDataPath + "/data.save").Dispose();
         }
         File.WriteAllText(Application.persistentDataPath + "/data.save", json);
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ChangeVolume()
+    {
+        
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        MusicSource.volume = volumeSlider.value;
     }
 }

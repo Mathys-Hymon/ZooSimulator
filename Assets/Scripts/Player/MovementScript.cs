@@ -6,7 +6,9 @@ public class MovementScript : MonoBehaviour
 {
     [SerializeField] Vector2 MaxPosition;
     [SerializeField] Vector2 MinPosition;
+    [SerializeField] GameObject PauseMenuRef;
     private Vector2 Direction;
+    private bool PauseMenuOpen;
 
     private void Update()
     {
@@ -52,6 +54,27 @@ public class MovementScript : MonoBehaviour
         }
 
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            FlipFlopMenu();
+        }
+
+    }
+
+    public void FlipFlopMenu()
+    {
+        if (!PauseMenuOpen)
+        {
+            PauseMenuRef.SetActive(true);
+            Time.timeScale = 0;
+            PauseMenuOpen = true;
+        }
+        else
+        {
+            PauseMenuRef.SetActive(false);
+            Time.timeScale = 1;
+            PauseMenuOpen = false;
+        }
     }
 
 }
